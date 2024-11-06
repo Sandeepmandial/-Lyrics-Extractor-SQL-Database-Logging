@@ -5,17 +5,17 @@ from lyrics_extractor import SongLyrics
 import mysql.connector
 from datetime import datetime
 
-# Creating connection object
 mydb = mysql.connector.connect(
     host="localhost",
-    user="root",  # Replace with your MySQL password
+    user="root",
+    password="root",  # Replace with your MySQL root password
     database="music_lyrics"
 )
 
 # Function to insert song name and timestamp into the database
 def insert_song_request(song_name):
     cursor = mydb.cursor()
-    query = "INSERT INTO song_requests (song_name) VALUES (%s)"
+    query = "INSERT INTO song_request (song_name) VALUES (%s)"
     cursor.execute(query, (song_name,))
     mydb.commit()
     cursor.close()
